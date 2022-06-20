@@ -78,7 +78,16 @@ $./bin/pulsar-admin schemas get data-cdckeyspace.cdctable
   }
 }
 ```
-  
+
+Using API the schema is:
+```
+$ curl -s http://10.xx.xx.73:8080/admin/v2/schemas/public/default/data-cdckeyspace.cdctable/schema
+```
+```
+{"version":0,"type":"KEY_VALUE","timestamp":0,"data":"{\"key\":{\"type\":\"record\",\"name\":\"cdctable\",\"namespace\":\"cdckeyspace\",\"doc\":\"Table cdckeyspace.cdctable\",\"fields\":[{\"name\":\"ip\",\"type\":\"string\"}]},\"value\":{\"type\":\"record\",\"name\":\"cdctable\",\"namespace\":\"cdckeyspace\",\"doc\":\"Table cdckeyspace.cdctable\",\"fields\":[{\"name\":\"status\",\"type\":[\"null\",\"string\"],\"default\":null}]}}","properties":{"key.schema.properties":"{}","value.schema.properties":"{}","value.schema.type":"AVRO","key.schema.name":"cdctable","value.schema.name":"cdctable","kv.encoding.type":"SEPARATED","key.schema.type":"AVRO"}}
+```
+
+
 ### SINK TOPIC: filetered_topic topic
 
 The table definition is as follows
