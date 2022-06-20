@@ -143,3 +143,4 @@ To send messages to the "sink" table, using "pulsar-client produce" the followin
 $./bin/pulsar-client produce -k '{"ip":"18345"}', -m '{"filtered_status":"off"}' persistent://public/default/filtered_topic
 ```
 
+Note there is not schema defined for filtered_topic
