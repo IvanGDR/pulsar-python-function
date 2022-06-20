@@ -129,5 +129,8 @@ configs:
         unit: MILLISECONDS
 ```
 
-
+To send messages to the @sink@ table, using "pulsar-cleint produce" the following is executed:
+```
+./bin/pulsar-client produce -k '{"ip":"18345"}', -m '{"filtered_status":"off"}' persistent://public/default/filtered_topic
+```
 
