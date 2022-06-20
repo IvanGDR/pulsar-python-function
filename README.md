@@ -107,7 +107,7 @@ configs:
   batchSize: 3000
   batchFlushTimeoutMs: 1000
   topics: filtered_topic
-  contactPoints: 10.101.35.73
+  contactPoints: 10.xx.xx.59
   loadBalancing.localDc: Cassandra
   port: 9042
   cloud.secureConnectBundle:
