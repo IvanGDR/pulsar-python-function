@@ -1,8 +1,6 @@
 # pulsar-python-function
 
-For this python function I am using a DataStax CDC source connector and DataStax sink connector.
-
-The pulsar python function will filter messages from the data-<keyspace name>.<table name> topic to another topic named filtered_topic.
+For this python function I am using a DataStax CDC source connector and DataStax sink connector. The pulsar python function will filter messages from the data-<keyspace name>.<table name> topic to another topic named filtered_topic.
   
   
 ### SOURCE TOPIC: data-cdckeyspace.cdctable topic 
