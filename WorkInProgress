@@ -1,0 +1,49 @@
+import json
+import base64
+import io
+import re
+
+
+topic_schema = """{"version":0,"type":"KEY_VALUE","timestamp":0,"data":"{\"key\":{\"type\":\"record\",\"name\":\"cdctable\",\"namespace\":\"cdckeyspace\",\"doc\":\"Table cdckeyspace.cdctable\",\"fields\":[{\"name\":\"ip\",\"type\":\"string\"}]},\"value\":{\"type\":\"record\",\"name\":\"cdctable\",\"namespace\":\"cdckeyspace\",\"doc\":\"Table cdckeyspace.cdctable\",\"fields\":[{\"name\":\"status\",\"type\":[\"null\",\"string\"],\"default\":null}]}}","properties":{"key.schema.properties":"{}","value.schema.properties":"{}","value.schema.type":"AVRO","key.schema.name":"cdctable","value.schema.name":"cdctable","kv.encoding.type":"SEPARATED","key.schema.type":"AVRO"}}"""
+
+
+topic_schema = topic_schema.replace("\\", "")
+topic_schema = topic_schema.replace('data":"', 'data":')
+topic_schema = topic_schema.replace('}","properties', '},"properties')
+
+
+print(topic_schema)
+# parse
+schema_json = json.loads(topic_schema)
+# the result is a Python dictionary:
+print(schema_json)
+#
+data_schema = schema_json["data"]
+print(data_schema)
+#
+keyschema_json = data_schema["key"]
+print(keyschema_json)
+valueschema_json = data_schema["value"]
+print(valueschema_json)
+#
+keyschema_json = data_schema["key"]
+print(keyschema_json)
+valueschema_json = data_schema["value"]
+print(valueschema_json)
+
+
+# the namespaces start with numbers and AVRO doesn't like it so strip them out for now
+key_namespace = keyschema_json["namespace"]
+key_namespace = re.sub("\d.*_", "", key_namespace)
+keyschema_json["namespace"] = key_namespace
+
+value_namespace = valueschema_json["namespace"]
+value_namespace = re.sub("\d.*_", "", value_namespace)
+valueschema_json["namespace"] = value_namespace
+
+
+
+
+
+
+
